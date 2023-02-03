@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <defaultValues>
+        <name multilanguage="true">Интернет-магазин в Telegram</name>
+        <description multilanguage="true"></description>
+        <version>1.0.0.1</version>
+        <author>CityPeople.ru (Zhenya Ovchinnikov)</author>
+        <core_version>>=6.0.45</core_version>
+    </defaultValues>
+</config>
