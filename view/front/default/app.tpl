@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="color-scheme" content="light dark">
 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -283,61 +284,68 @@
                 </div>
             </div>
             <div v-else>
-{if (!empty($zone))}
-                {if (!empty($banners))}
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-          {$i=0}
-          {foreach $banners as $banner}
-            {if ($i==0)}
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="$i" class="active" aria-current="true" aria-label=""></button>
-            {else}
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="$i" aria-current="true" aria-label=""></button>
-            {/if}
-            {$i=$i+1}
-          {/foreach}
-          {$i=0}
-          {foreach $banners as $banner}
-            {if ($i==0)}
-            <div class="carousel-item active"><img src="{$banner->getBannerUrl($zone.width, $zone.height)}" alt="{$banner.title}" class="img-fluid rounded"></div>
-            {else}
-            <div class="carousel-item"><img src="{$banner->getBannerUrl($zone.width, $zone.height)}" alt="{$banner.title}" class="img-fluid rounded"></div>
-            {/if}
-            {$i=$i+1}
-          {/foreach}
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-                </div>
-                {/if}
-            {/if}
+				{if (!empty($zone))}
+					{if (!empty($banners))}
+					<div id="carouselExampleIndicators" class="carousel slide mb-2" data-bs-ride="carousel">
+						{$i=0}
+						<div class="carousel-indicators">
+							{$i=0}
+							{foreach $banners as $banner}
+								{if ($i==0)}
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{$i}" class="active" aria-current="true" aria-label="12"></button>
+								{else}
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{$i}" aria-current="true" aria-label="12"></button>
+								{/if}
+								{$i=$i+1}
+							{/foreach}
+						</div>
+						<div class="carousel-inner">
+							{$i=0}
+							{foreach $banners as $banner}
+								{if ($i==0)}
+								<div class="carousel-item active"><img src="{$banner->getBannerUrl($zone.width, $zone.height)}" alt="{$banner.title}" class="img-fluid rounded"></div>
+								{else}
+								<div class="carousel-item"><img src="{$banner->getBannerUrl($zone.width, $zone.height)}" alt="{$banner.title}" class="img-fluid rounded"></div>
+								{/if}
+								{$i=$i+1}
+							{/foreach}
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+					{/if}
+				{/if}
                 {if ($cat == true && !empty($products))}
+				<div class="row">
                     {foreach $products as $product}
-                    <div class="card mb-1">
-                        <img class="card-img-top" src="/storage/photo/original/{$product->image}" alt="{$product->title}">
-                        <div class="card-body">
-                            <h3 class="card-title">{$product->title}</h3>
-                            <p>{$product->short_description}</p>
-                            <div class="d-flex">
-                                <div class="flex-shrink-0">
-                                    <span class="display-4 lh-1">{$product->cost}</span>
-                                </div>
-                                <div class="flex-grow-1 align-self-end ms-3">
-                                    <span class="d-block">{$product->currency}</span>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <button @click="add_cart({$product->id})" class="btn btn-primary" type="button"><i class="bi bi-bag"></i> В корзину</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<div class="col-6">
+						<div class="card mb-1">
+							<img class="card-img-top" src="/storage/photo/original/{$product->image}" alt="{$product->title}">
+							<div class="card-body">
+								<h3 class="card-title">{$product->title}</h3>
+								<p>{$product->short_description}</p>
+								<div class="">
+									<div class="">
+										<span class="display-4 lh-1">{$product->cost}</span>
+									</div>
+									<div class="">
+										<span class="d-block">{$product->currency}</span>
+									</div>
+									<div class="">
+										<button @click="add_cart({$product->id})" class="btn btn-primary" type="button"><i class="bi bi-bag"></i> В корзину</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                     {/foreach}
+				</div>
                 {/if}
                 </div>
             </div>
